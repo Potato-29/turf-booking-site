@@ -12,8 +12,12 @@ import { useRouter } from "next/navigation";
 
 const TurfCard = ({ turf }) => {
   const router = useRouter();
+  console.log(turf);
   return (
-    <div className="flex flex-col justify-center my-5 border rounded-xl mx-5 transition duration-300 hover:shadow-md">
+    <div
+      onClick={() => router.push(`/venue/${turf.id}`)}
+      className="flex flex-col justify-center my-5 border rounded-xl mx-5 transition duration-300 hover:shadow-md cursor-pointer"
+    >
       <div>
         <img
           src={turf?.header_image}
@@ -23,7 +27,7 @@ const TurfCard = ({ turf }) => {
       </div>
       <div className="p-4">
         <p className="font-semibold">{turf?.name}</p>
-        <p className="">{turf?.location}</p>
+        <p className="">{turf?.address}</p>
       </div>
       <div className="flex px-4 py-3 justify-between items-center">
         <div className="flex flex-row  w-full">
@@ -49,26 +53,6 @@ const TurfCard = ({ turf }) => {
           />
         </div>
       </div>
-
-      {/* <Card
-        onClick={() => router.push(`/venue/${turf.id}`)}
-        hoverable
-        style={{ width: 300 }}
-        cover={<img alt="example" src={turf?.header_image} />}
-        actions={[
-          <SettingOutlined key="setting" />,
-          <EditOutlined key="edit" />,
-          <EllipsisOutlined key="ellipsis" />,
-        ]}
-      >
-        <Meta
-          avatar={
-            <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
-          }
-          title={turf?.name}
-          description={turf?.location}
-        />
-      </Card> */}
     </div>
   );
 };

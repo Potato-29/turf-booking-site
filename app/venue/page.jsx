@@ -1,7 +1,7 @@
 import React from "react";
-
+import RootLayout from "@/app/layout";
 const Venue = () => {
-  return <div>Venue</div>;
+  return <RootLayout>Venue</RootLayout>;
 };
 
 export default Venue;
