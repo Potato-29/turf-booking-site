@@ -4,20 +4,35 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, message, Spin } from "antd";
 import { loginUser } from "@/helpers/authApi";
 import { useRouter } from "next/navigation";
+import { userRoles } from "@/constants";
 
 const Login = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
   const onFinish = async (values) => {
     setIsLoading(true);
     try {
-      const response = await loginUser(values);
+      const { response } = await loginUser(values);
       if (response) {
-        message.success("Login successfull");
+        let user_role = response.user.user_metadata["user-role"];
+        if (user_role === userRoles.PLAYER) {
+          router.push("/");
+        }
+
+        if (user_role === userRoles.MANAGER) {
+          router.push("/manager/dashboard");
+        }
+
+        if (user_role === userRoles.ADMIN) {
+          router.push("/admin/dashboard");
+        }
+
         setIsLoading(false);
-        router.push("/");
+        message.success("Login successfull");
       }
     } catch (error) {
+      console.log(error);
       message.error("Something went wrong!");
       setIsLoading(false);
     }

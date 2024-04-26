@@ -1,10 +1,4 @@
 import React from "react";
-import { Avatar, Card, Button } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import { IoMdFootball, IoMdTennisball } from "react-icons/io";
 import { MdSportsCricket } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
@@ -12,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 const TurfCard = ({ turf }) => {
   const router = useRouter();
-  console.log(turf);
   return (
     <div
       onClick={() => router.push(`/venue/${turf.id}`)}
