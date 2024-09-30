@@ -54,12 +54,12 @@ export async function PUT(request) {
         response: data,
         error: false,
         message: "User logged in successfully",
+      },
+      {
+        headers: {
+          "Set-Cookie": data?.session?.access_token,
+        },
       }
-      //   {
-      //     headers: {
-      //       "Set-Cookie": data?.session?.access_token,
-      //     },
-      //   }
     );
   } catch (error) {
     console.log(error);

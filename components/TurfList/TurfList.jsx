@@ -21,8 +21,8 @@ const TurfList = () => {
         gutter: 16,
         xs: 1,
         sm: 2,
-        md: 4,
-        lg: 4,
+        md: 3,
+        lg: 3,
         xl: 4,
         xxl: 3,
       }}
