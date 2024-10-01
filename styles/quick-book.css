@@ -1,0 +1,5 @@
+.ant-tabs-content-holder {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}

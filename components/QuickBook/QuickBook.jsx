@@ -1,27 +1,39 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tabs } from "antd";
-import TurfCard from "../TurfCard/TurfCard";
 import TurfList from "../TurfList/TurfList";
+import { getTurfBySport } from "@/services/turf-services";
+import "@/styles/quick-book.css";
 
 const QuickBook = () => {
+  const [turfs, setTurfs] = useState([]);
   const items = [
     {
-      key: "1",
+      key: "football",
       label: "Football",
-      children: <TurfList />,
+      children: <TurfList turfs={turfs} />,
     },
     {
-      key: "2",
+      key: "cricket",
       label: "Cricket",
-      children: <TurfList />,
+      children: <TurfList turfs={turfs} />,
     },
     {
-      key: "3",
-      label: "Others",
-      children: <TurfList />,
+      key: "all",
+      label: "All sports",
+      children: <TurfList turfs={turfs} />,
     },
   ];
+
+  const getFilteredTurfs = async (type) => {
+    const result = await getTurfBySport(type);
+    setTurfs(result);
+  };
+
+  useEffect(() => {
+    getFilteredTurfs("football");
+  }, []);
+
   return (
     <div className="w-full flex justify-center items-center py-10 flex-col">
       <div className="py-8">
@@ -33,7 +45,7 @@ const QuickBook = () => {
         centered
         tabBarStyle={{ width: "100%" }}
         items={items}
-        onChange={(value) => console.log(value)}
+        onChange={(value) => getFilteredTurfs(value)}
       />
     </div>
   );

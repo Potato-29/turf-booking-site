@@ -1,19 +1,8 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { List, Card } from "antd";
-import { supabase } from "@/utils/supabase/supabase";
 import TurfCard from "../TurfCard/TurfCard";
 
-const TurfList = () => {
-  const [turfs, setTurfs] = useState([]);
-  const getData = async () => {
-    const { data } = await supabase.from("turfs").select("*");
-    setTurfs(data);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+const TurfList = ({ turfs }) => {
   return (
     <List
       className="overflow-hidden"
