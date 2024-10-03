@@ -17,7 +17,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "supabase": "^1.148.6"
+    "supabase": "^1.148.6",
+    "turf-booking-site": "file:"
   },
   "devDependencies": {
     "@types/react": "18.3.10",
