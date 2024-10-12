@@ -1,8 +1,9 @@
 "use client";
+import { VenueInformationComponent } from "@/components/VenueInformation";
 import React from "react";
 
 const VenuePage = ({ params }) => {
-  return <div className="h-screen ">VenuePage {params.id}</div>;
+  return <VenueInformationComponent params={params} />;
 };
 
 export default VenuePage;

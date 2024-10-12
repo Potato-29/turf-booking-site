@@ -1,23 +1,3 @@
-// import { supabase } from "@/utils/supabase/supabase";
-
-// export const getTurfBySport = async (sport) => {
-//   if (sport === "all") {
-//     const { data } = await supabase
-//       .from("turfs")
-//       .select("*")
-//       .contains("available_sports", []);
-//     return data;
-//   } else {
-//     const { data } = await supabase
-//       .from("turfs")
-//       .select("*")
-//       .contains("available_sports", [sport]);
-//     return data;
-//   }
-// };
-
-//changes by me
-
 import { supabase } from "@/utils/supabase/supabase";
 
 export const getTurfBySport = async (sport) => {
@@ -39,4 +19,13 @@ export const getTurfBySport = async (sport) => {
     }
     return data;
   }
+};
+
+export const getTurfById = async (id) => {
+  const { data, error } = await supabase.from("turfs").select("*").eq("id", id);
+  if (error) {
+    console.error("Error fetching data:", error);
+    return [];
+  }
+  return data;
 };

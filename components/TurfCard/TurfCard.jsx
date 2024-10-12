@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 const TurfCard = ({ turf }) => {
+  console.log(turf);
   const renderIcon = (sport) => {
     switch (sport) {
       case "football":
@@ -43,10 +44,7 @@ const TurfCard = ({ turf }) => {
         </div>
         <div className="flex px-4 py-3 justify-between items-center">
           <div className="flex flex-row w-full">
-            {turf?.available_sports.map((sport) => renderIcon(sport))}
-            {/* <IoMdFootball className="mr-2 border border-gray-400 transition duration-300 hover:bg-slate-200 rounded-full hover:scale-110 p-1 lg:p-2 text-4xl lg:text-5xl" />
-            <MdSportsCricket className="mx-2 border border-gray-400 transition duration-300 hover:bg-slate-200 rounded-full hover:scale-110 p-1 lg:p-2 text-4xl lg:text-5xl" />
-            <IoMdTennisball className="mx-2 border border-gray-400 transition duration-300 hover:bg-slate-200 rounded-full hover:scale-110 p-1 lg:p-2 text-4xl lg:text-5xl" /> */}
+            {turf?.available_sports?.map((sport) => renderIcon(sport))}
           </div>
           <div className="flex">
             <FaArrowRight
