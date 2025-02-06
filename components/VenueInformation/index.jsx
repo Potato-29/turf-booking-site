@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function VenueInformationComponent({ params }) {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -27,49 +28,12 @@ export function VenueInformationComponent({ params }) {
     }
   };
 
+  const router = useRouter();
+
   console.log("turf", turf);
   useEffect(() => {
     getTurfInfo();
   }, []);
-
-  const venue = {
-    name: "Green Fields Sports Complex",
-    address: "123 Sports Ave, Athleticville, SP 12345",
-    image: "/placeholder.svg?height=400&width=800",
-    price: {
-      hourly: 50,
-      daily: 400,
-    },
-    sports: ["Football", "Cricket", "Tennis", "Basketball"],
-    hours: {
-      weekdays: "6:00 AM - 10:00 PM",
-      weekends: "7:00 AM - 11:00 PM",
-    },
-    amenities: [
-      "Changing Rooms",
-      "Showers",
-      "Parking",
-      "Floodlights",
-      "Equipment Rental",
-    ],
-    reviews: [
-      {
-        author: "John D.",
-        rating: 4.5,
-        comment: "Great facilities and well-maintained turf!",
-      },
-      {
-        author: "Sarah M.",
-        rating: 5,
-        comment: "Excellent venue for our football tournament.",
-      },
-      {
-        author: "Mike R.",
-        rating: 4,
-        comment: "Good location, but parking can be challenging on weekends.",
-      },
-    ],
-  };
 
   return (
     <div className="container mx-auto px-4 py-4">
@@ -184,7 +148,13 @@ export function VenueInformationComponent({ params }) {
                     onChange={(e) => setSelectedDate(e.target.value)}
                   />
                 </div>
-                <Button className="w-full">Check Availability</Button>
+                <Button
+                  className="w-full"
+                  onClick={() => router.push(`/booking?turf_id=${params.id}`)}
+                  variant="success"
+                >
+                  Book Now
+                </Button>
               </CardContent>
             </Card>
 
